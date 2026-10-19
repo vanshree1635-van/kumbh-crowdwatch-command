@@ -26,7 +26,7 @@ const detections = [
 type Verdict = "Pending" | "Confirmed threat" | "False positive" | "Escalated";
 
 function Weapons() {
-  const [sel, setSel] = useState(detections[0].id);
+  const [sel, setSel] = useState(detections[0]!.id);
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({ "DET-21": "Pending", "DET-22": "Pending" });
   const [notes, setNotes] = useState("");
   const d = detections.find((x) => x.id === sel)!;

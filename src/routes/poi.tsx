@@ -27,7 +27,7 @@ const records = [
 
 function Poi() {
   const [q, setQ] = useState("");
-  const [sel, setSel] = useState(records[0]);
+  const [sel, setSel] = useState(records[0]!);
   const [decisions, setDecisions] = useState<Record<string, string>>({});
   const list = records.filter((r) => (r.alias + r.id + r.reason).toLowerCase().includes(q.toLowerCase()));
   const decide = (v: string) => {

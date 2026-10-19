@@ -43,11 +43,11 @@ function Crowd() {
           <div className="space-y-6">
             <div>
               <div className="mb-2 flex justify-between text-sm"><span>Warning</span><span className="font-mono text-warning">{thresholds.warning}</span></div>
-              <Slider min={500} max={3000} step={50} value={[thresholds.warning]} onValueChange={([v]) => setThresholds({ warning: Math.min(v, thresholds.critical - 50), critical: thresholds.critical })} />
+              <Slider min={500} max={3000} step={50} value={[thresholds.warning]} onValueChange={([v = 0]) => setThresholds({ warning: Math.min(v, thresholds.critical - 50), critical: thresholds.critical })} />
             </div>
             <div>
               <div className="mb-2 flex justify-between text-sm"><span>Critical</span><span className="font-mono text-destructive">{thresholds.critical}</span></div>
-              <Slider min={600} max={4000} step={50} value={[thresholds.critical]} onValueChange={([v]) => setThresholds({ warning: thresholds.warning, critical: Math.max(v, thresholds.warning + 50) })} />
+              <Slider min={600} max={4000} step={50} value={[thresholds.critical]} onValueChange={([v = 0]) => setThresholds({ warning: thresholds.warning, critical: Math.max(v, thresholds.warning + 50) })} />
             </div>
             <p className="text-xs text-muted-foreground">Changing thresholds updates zone levels and dashboard warnings instantly.</p>
           </div>

@@ -185,7 +185,7 @@ export function CameraSheet({ cam, onClose }: { cam: Camera | null; onClose: () 
   );
 }
 
-export function SiteMap({ onCamera, selectedIncident, onIncident }: { onCamera?: (c: Camera) => void; selectedIncident?: string; onIncident?: (i: Incident) => void }) {
+export function SiteMap({ onCamera, selectedIncident, onIncident }: { onCamera?: (c: Camera) => void; selectedIncident?: string | undefined; onIncident?: (i: Incident) => void }) {
   const { cameras, incidents } = useDemoStore();
   return (
     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-border bg-secondary">

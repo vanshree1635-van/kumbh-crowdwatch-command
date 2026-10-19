@@ -66,7 +66,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
   const [thresholds, setThresholds] = useState({ warning: 1500, critical: 2200 });
 
   const simulateCrowdAlert = (cameraId?: string) => {
-    const cam = cameras.find((c) => c.id === cameraId) ?? cameras[Math.floor(Math.random() * cameras.length)];
+    const cam = cameras.find((c) => c.id === cameraId) ?? cameras[Math.floor(Math.random() * cameras.length)]!;
     const num = 1000 + incidents.length + 1;
     const inc: Incident = {
       id: `INC-${num}`,
