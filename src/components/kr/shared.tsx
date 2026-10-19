@@ -139,13 +139,18 @@ export function IncidentActions({ inc }: { inc: Incident }) {
 }
 
 export function CameraFeed({ cam, className }: { cam: Camera; className?: string }) {
+  const frame = camFrames[cam.id];
   return (
-    <div className={cn("relative aspect-video overflow-hidden rounded-md bg-secondary scanlines", className)}>
-      <Video className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/40" />
+    <div className={cn("relative aspect-video overflow-hidden rounded-md bg-secondary", className)}>
+      {frame ? (
+        <img src={frame} alt={`Simulated CCTV frame · ${cam.name}`} width={1280} height={720} loading="lazy" className="h-full w-full object-cover" />
+      ) : (
+        <Video className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/40" />
+      )}
       <div className="absolute left-2 top-2 flex items-center gap-1.5 font-mono text-[10px] text-foreground/80">
-        <span className={cn("h-2 w-2 rounded-full", camDot(cam.status))} /> {cam.id}
+        <span className={cn("h-2 w-2 rounded-full bg-success", cam.status !== "Online" && (cam.status === "Degraded" ? "bg-warning" : "bg-destructive"))} /> {cam.id}
       </div>
-      <div className="absolute bottom-2 left-2 font-mono text-[10px] text-muted-foreground">VIDEO PLACEHOLDER · NOT LIVE</div>
+      <div className="absolute bottom-2 left-2 font-mono text-[10px] text-foreground/80">SIMULATED FOOTAGE · NOT LIVE</div>
     </div>
   );
 }
