@@ -17,7 +17,7 @@ export const Route = createFileRoute("/incidents")({
   component: Incidents,
 });
 
-function Filter({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (v: string) => void }) {
+function Filter({ label, value, options, onChange }: { label: string; value: string; options: readonly string[]; onChange: (v: string) => void }) {
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger className="w-52" aria-label={label}><SelectValue /></SelectTrigger>
