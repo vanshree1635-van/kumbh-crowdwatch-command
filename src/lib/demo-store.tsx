@@ -29,7 +29,7 @@ export interface Incident {
   y: number;
 }
 
-export const ZONES = ["Har Ki Pauri Sector A", "Brahmakund Ghat B", "Rishikesh Road Gate C", "Chandi Ghat Sector D"];
+export const ZONES = ["Har Ki Pauri Sector A", "Brahmakund Ghat B", "Rishikesh Road Gate C", "Chandi Ghat Sector D"] as const;
 export const INCIDENT_TYPES: IncidentType[] = ["Crowd Density", "Weapon Detection", "Person of Interest", "Medical", "Lost Person"];
 export const STATUSES: IncidentStatus[] = ["New", "Acknowledged", "Under Review", "Resolved"];
 
