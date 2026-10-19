@@ -10,33 +10,83 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CrowdRouteImport } from './routes/crowd'
+import { Route as IncidentsRouteImport } from './routes/incidents'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as PoiRouteImport } from './routes/poi'
+import { Route as WeaponsRouteImport } from './routes/weapons'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CrowdRoute = CrowdRouteImport.update({
+  id: '/crowd',
+  path: '/crowd',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncidentsRoute = IncidentsRouteImport.update({
+  id: '/incidents',
+  path: '/incidents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoiRoute = PoiRouteImport.update({
+  id: '/poi',
+  path: '/poi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeaponsRoute = WeaponsRouteImport.update({
+  id: '/weapons',
+  path: '/weapons',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crowd': typeof CrowdRoute
+  '/incidents': typeof IncidentsRoute
+  '/map': typeof MapRoute
+  '/poi': typeof PoiRoute
+  '/weapons': typeof WeaponsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crowd': typeof CrowdRoute
+  '/incidents': typeof IncidentsRoute
+  '/map': typeof MapRoute
+  '/poi': typeof PoiRoute
+  '/weapons': typeof WeaponsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crowd': typeof CrowdRoute
+  '/incidents': typeof IncidentsRoute
+  '/map': typeof MapRoute
+  '/poi': typeof PoiRoute
+  '/weapons': typeof WeaponsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/crowd' | '/incidents' | '/map' | '/poi' | '/weapons'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/crowd' | '/incidents' | '/map' | '/poi' | '/weapons'
+  id: '__root__' | '/' | '/crowd' | '/incidents' | '/map' | '/poi' | '/weapons'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CrowdRoute: typeof CrowdRoute
+  IncidentsRoute: typeof IncidentsRoute
+  MapRoute: typeof MapRoute
+  PoiRoute: typeof PoiRoute
+  WeaponsRoute: typeof WeaponsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +98,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crowd': {
+      id: '/crowd'
+      path: '/crowd'
+      fullPath: '/crowd'
+      preLoaderRoute: typeof CrowdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/incidents': {
+      id: '/incidents'
+      path: '/incidents'
+      fullPath: '/incidents'
+      preLoaderRoute: typeof IncidentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poi': {
+      id: '/poi'
+      path: '/poi'
+      fullPath: '/poi'
+      preLoaderRoute: typeof PoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weapons': {
+      id: '/weapons'
+      path: '/weapons'
+      fullPath: '/weapons'
+      preLoaderRoute: typeof WeaponsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CrowdRoute: CrowdRoute,
+  IncidentsRoute: IncidentsRoute,
+  MapRoute: MapRoute,
+  PoiRoute: PoiRoute,
+  WeaponsRoute: WeaponsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
