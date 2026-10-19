@@ -40,7 +40,9 @@ const initialCameras: Camera[] = [
   { id: "CAM-04", name: "Parking Corridor", zone: ZONES[3], status: "Online", peopleCount: 540, x: 74, y: 74 },
 ];
 
-const ago = (min: number) => new Date(Date.now() - min * 60000).toISOString();
+// Fixed base time so server and browser render identical sample timestamps.
+const BASE = Date.parse("2027-04-14T10:00:00+05:30");
+const ago = (min: number) => new Date(BASE - min * 60000).toISOString();
 
 const initialIncidents: Incident[] = [
   { id: "INC-1004", type: "Crowd Density", zone: ZONES[2], cameraId: "CAM-03", severity: "High", status: "New", time: ago(6), note: "Simulated: queue density above warning threshold.", x: 25, y: 66 },
@@ -102,4 +104,4 @@ export function useDemoStore() {
 
 export const isActive = (i: Incident) => i.status !== "Resolved";
 export const formatTime = (iso: string) =>
-  new Date(iso).toLocaleString("en-IN", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+  new Date(iso).toLocaleString("en-IN", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" });
