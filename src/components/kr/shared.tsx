@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useDemoStore, isActive, formatTime, type Camera, type Incident, type IncidentStatus, type Severity } from "@/lib/demo-store";
 import { cn } from "@/lib/utils";
+import cam01 from "@/assets/cam-01.jpg";
+import cam02 from "@/assets/cam-02.jpg";
+import cam03 from "@/assets/cam-03.jpg";
+import cam04 from "@/assets/cam-04.jpg";
+
+// Simulated CCTV still frames (fictional demo images, not live feeds).
+const camFrames: Record<string, string> = { "CAM-01": cam01, "CAM-02": cam02, "CAM-03": cam03, "CAM-04": cam04 };
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
