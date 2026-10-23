@@ -15,11 +15,16 @@ import cam01Video from "@/assets/videos/cam-01.mp4.asset.json";
 import cam02Video from "@/assets/videos/cam-02.mp4.asset.json";
 import cam03Video from "@/assets/videos/cam-03.mp4.asset.json";
 import cam04Video from "@/assets/videos/cam-04.mp4.asset.json";
+import cam01Webm from "@/assets/videos/cam-01.webm.asset.json";
+import cam02Webm from "@/assets/videos/cam-02.webm.asset.json";
+import cam03Webm from "@/assets/videos/cam-03.webm.asset.json";
+import cam04Webm from "@/assets/videos/cam-04.webm.asset.json";
 
 // Simulated CCTV still frames used as video posters (fictional demo images, not live feeds).
 const camFrames: Record<string, string> = { "CAM-01": cam01, "CAM-02": cam02, "CAM-03": cam03, "CAM-04": cam04 };
-// Simulated CCTV footage clips (fictional demo videos, not live feeds).
+// Simulated CCTV footage clips (fictional demo videos, not live feeds); WebM fallback for codec support.
 const camVideos: Record<string, string> = { "CAM-01": cam01Video.url, "CAM-02": cam02Video.url, "CAM-03": cam03Video.url, "CAM-04": cam04Video.url };
+const camWebm: Record<string, string> = { "CAM-01": cam01Webm.url, "CAM-02": cam02Webm.url, "CAM-03": cam03Webm.url, "CAM-04": cam04Webm.url };
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
