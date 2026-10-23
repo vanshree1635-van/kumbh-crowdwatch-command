@@ -156,7 +156,10 @@ export function CameraFeed({ cam, className }: { cam: Camera; className?: string
   return (
     <div className={cn("relative aspect-video overflow-hidden rounded-md bg-secondary", className)}>
       {video ? (
-        <video src={video} poster={frame} autoPlay muted loop playsInline className="h-full w-full object-cover" />
+        <video poster={frame} autoPlay muted loop playsInline className="h-full w-full object-cover">
+          <source src={video} type="video/mp4" />
+          <source src={camWebm[cam.id]} type="video/webm" />
+        </video>
       ) : (
         <Video className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/40" />
       )}
