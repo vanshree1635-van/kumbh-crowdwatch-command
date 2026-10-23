@@ -147,10 +147,11 @@ export function IncidentActions({ inc }: { inc: Incident }) {
 
 export function CameraFeed({ cam, className }: { cam: Camera; className?: string }) {
   const frame = camFrames[cam.id];
+  const video = camVideos[cam.id];
   return (
     <div className={cn("relative aspect-video overflow-hidden rounded-md bg-secondary", className)}>
-      {frame ? (
-        <img src={frame} alt={`Simulated CCTV frame · ${cam.name}`} width={1280} height={720} loading="lazy" className="h-full w-full object-cover" />
+      {video ? (
+        <video src={video} poster={frame} autoPlay muted loop playsInline className="h-full w-full object-cover" />
       ) : (
         <Video className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/40" />
       )}
